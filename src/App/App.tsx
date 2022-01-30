@@ -1,26 +1,19 @@
-import React from 'react';
+import React, { memo, useContext } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Dashboard from '../Molecules/Dashboard/Dashboard';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { store } from './AppState';
 
-function App() {
+const App = memo(() => {
+  const { dispatch } = useContext(store);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Dashboard />
+    </Router>
   );
-}
+});
+
+App.displayName = 'Pokemon code challenge';
 
 export default App;
